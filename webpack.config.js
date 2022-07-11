@@ -10,7 +10,7 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules)/,
                 loader: 'babel-loader',
-                options: {presets: ["@babel/env"]}
+                options: { presets: ["@babel/env"] }
             },
             {
                 test: /\.css$/,
@@ -18,21 +18,17 @@ module.exports = {
             }
         ]
     },
-    resolve: { extensions: ['*','.js', '.jsx' ]},
+    resolve: { extensions: ['*', '.js', '.jsx'] },
     output: {
         path: path.resolve(__dirname, 'dist/'),
         publicPath: '/dist/',
         filename: 'bundle.js'
     },
     devServer: {
-        static : {
-            directory : path.join(__dirname, "public/")
-          },
-        port:3000,
-        devMiddleware:{
-            publicPath: "https://localhost:3000/dist/",
-         },
-        hot: true
+        contentBase: path.join(__dirname, 'public/'),
+        port: 3000,
+        publicPath: 'http://localhost:3000/dist/',
+        hotOnly: true
     },
     plugins: [new webpack.HotModuleReplacementPlugin()]
 };
